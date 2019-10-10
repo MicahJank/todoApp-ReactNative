@@ -9,6 +9,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import allReducers from './reducers';
 
+import Header from './components/Header.js';
+
 const enhancer = compose(applyMiddleware(thunk, logger));
 
 const store = createStore(allReducers, enhancer);
@@ -24,6 +26,7 @@ export default function App() {
     <Provider store={store}>
         <View style={styles.container}>
           {statusbar}
+          <Header />
         </View>
     </Provider>
   );
