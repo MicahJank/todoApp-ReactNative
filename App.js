@@ -20,7 +20,7 @@ export default function App() {
     
     <Provider store={store}>
         <View style={styles.container}>
-          <Text>Hello There Again</Text>
+          <Text>Hello There Again Friend</Text>
         </View>
     </Provider>
   );
