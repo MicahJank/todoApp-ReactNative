@@ -10,6 +10,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import allReducers from './reducers';
 
 import Header from './components/Header.js';
+import InputBar from './components/InputBar.js';
+
 
 const enhancer = compose(applyMiddleware(thunk, logger));
 
@@ -27,6 +29,7 @@ export default function App() {
         <View style={styles.container}>
           {statusbar}
           <Header />
+          <InputBar />
         </View>
     </Provider>
   );
