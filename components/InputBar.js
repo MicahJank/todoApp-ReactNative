@@ -15,6 +15,7 @@ const InputBar = ({ addTodo }) => {
 
     const handlePress = () => {
         addTodo(text);
+        setText('');
     } 
 
     return (

@@ -26,6 +26,8 @@ const todoList = (state = intialState, action) => {
                     } else {
                         return todo;
                     }
+                }).sort((todo1, todo2) => {
+                    return (todo1.completed === todo2.completed) ? 0 : todo1.completed ? 1 : -1;
                 })
             }
         case DELETE_TODO: 
