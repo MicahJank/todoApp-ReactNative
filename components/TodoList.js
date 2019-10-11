@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { toggleCompleted } from '../actions';
+import { toggleCompleted, deleteTodo } from '../actions';
 import { connect } from 'react-redux';
 import { StyleSheet, FlatList, View, Text } from 'react-native';
 
 import Todo from './Todo.js';
 
-const TodoList = ({ todos, toggleCompleted }) => {
+const TodoList = ({ todos, toggleCompleted, deleteTodo }) => {
 
 
   return (
@@ -14,7 +14,7 @@ const TodoList = ({ todos, toggleCompleted }) => {
       <FlatList
         data={todos}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item, index}) => <Todo toggle={toggleCompleted} todo={item} />}
+        renderItem={({item, index}) => <Todo deleteTodo={deleteTodo} toggle={toggleCompleted} todo={item} />}
       />
     </View>
   )
@@ -40,4 +40,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { toggleCompleted })(TodoList);
+const actionCreators = {
+  toggleCompleted,
+  deleteTodo
+} 
+
+export default connect(mapStateToProps, actionCreators)(TodoList);

@@ -2,10 +2,14 @@ import React from 'react';
 
 import { StyleSheet, View, Text, TouchableOpacity, Button} from 'react-native';
 
-const Todo = ( { todo, toggle } ) => {
+const Todo = ( { todo, toggle, deleteTodo } ) => {
 
   const handlePress = () => {
     toggle(todo);
+  }
+
+  const handleDelete = () => {
+    deleteTodo(todo);
   }
 
   return (
@@ -13,6 +17,11 @@ const Todo = ( { todo, toggle } ) => {
        <Text style={todo.completed ? { color: '#AAAAAA'} : { color: '#313131' }}>
          {todo.text}
        </Text>
+       <Button
+          title='remove'
+          color={todo.completed ? 'rgba(200, 0, 0, 0.5)' : 'rgba(255, 0, 0, 1)'}
+          onPress={handleDelete}
+       />
     </TouchableOpacity>
     )
 };

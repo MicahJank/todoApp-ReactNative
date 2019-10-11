@@ -1,5 +1,5 @@
 // import action variables
-import { ADD_TODO, TOGGLE_COMPLETED } from '../actions';
+import { ADD_TODO, TOGGLE_COMPLETED, DELETE_TODO } from '../actions';
 
 const intialState = { 
     todos: [],
@@ -27,6 +27,11 @@ const todoList = (state = intialState, action) => {
                         return todo;
                     }
                 })
+            }
+        case DELETE_TODO: 
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo.id !== action.payload)
             }
         default:
             return state;
