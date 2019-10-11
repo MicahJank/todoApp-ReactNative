@@ -2,9 +2,20 @@ import React, { useState } from 'react';
 
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'; 
 
-const InputBar = props => {
+import { connect, useSelector } from 'react-redux';
+
+import { addTodo } from '../actions';
+
+const InputBar = ({ addTodo }) => {
+
+    const todoList = useSelector(state => state.todoList.todos);
+    // console.log(todoList);
 
     const [text, setText] = useState('');
+
+    const handlePress = () => {
+        addTodo(text);
+    } 
 
     return (
         <View style={styles.inputContainer}>
@@ -13,7 +24,7 @@ const InputBar = props => {
                 onChangeText={text => setText(text)}
                 value={text}
             />
-            <TouchableOpacity style={styles.addButton}>
+            <TouchableOpacity onPress={handlePress} style={styles.addButton}>
                 <Text style={styles.addButtonText}>ADD</Text>
             </TouchableOpacity>
         </View>
@@ -47,4 +58,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default InputBar;
+export default connect(null, { addTodo })(InputBar);

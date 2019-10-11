@@ -11,6 +11,7 @@ import allReducers from './reducers';
 
 import Header from './components/Header.js';
 import InputBar from './components/InputBar.js';
+import TodoList from './components/TodoList.js';
 
 
 const enhancer = compose(applyMiddleware(thunk, logger));
@@ -22,7 +23,7 @@ const store = createStore(allReducers, enhancer);
 export default function App() {
 
   const statusbar = (Platform.OS === 'ios') ? <View style={styles.statusBar}></View> : <View></View>
-
+  
   return (
     
     <Provider store={store}>
@@ -30,6 +31,7 @@ export default function App() {
           {statusbar}
           <Header />
           <InputBar />
+          <TodoList />
         </View>
     </Provider>
   );
