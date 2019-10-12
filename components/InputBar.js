@@ -14,8 +14,10 @@ const InputBar = ({ addTodo }) => {
     const [text, setText] = useState('');
 
     const handlePress = () => {
-        addTodo(text);
-        setText('');
+        if(text !== '') {
+            addTodo(text);
+            setText('');
+        }
     } 
 
     return (
